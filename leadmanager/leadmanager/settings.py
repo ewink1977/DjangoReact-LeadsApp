@@ -19,9 +19,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
-# Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -31,8 +28,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'leads',
     'frontend',
-    'rest_framework'
+    'accounts',
+    'rest_framework',
+    'knox',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -63,10 +66,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'leadmanager.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
